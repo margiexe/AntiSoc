@@ -1,0 +1,17 @@
+{% extends "groups/group_base.html" %}
+
+
+{% block group_content %}
+<h3>Are you sure you want to delete this group?</h3>
+
+<div class="groups">
+	{% include "groups/group_list.html" with group=object hide_delete=True %}
+</div>
+
+<form method="POST">
+	{% csrf_token %}
+	<input type="submit" value="Confirm Delete" class="btn btn-danger btn-large">
+	<a href="{% url 'groups:single' username=user.username pk=object.pk %}" class="btn btn-simple btn-large btn-default">Cancel</a>
+</form>
+
+{% endblock %}
